@@ -14,8 +14,8 @@ fn get_groups() -> Vec<u32> {
 
 fn first_star() -> u32 {
     let groups = get_groups();
-    let min_value = groups.iter().max();
-    match min_value {
+    let max_value = groups.iter().max();
+    match max_value {
         Some(val) => *val,
         None => 0,
     }
