@@ -13,9 +13,9 @@ fn get_rucksacks() -> Vec<Rucksack> {
 
 fn convert_char(c: char) -> u32 {
     if c.is_uppercase() {
-        (c as u32) - (65 - 27)
+        c as u32 - 'A' as u32 + 27
     } else {
-        (c as u32) - 96
+        c as u32 - 'a' as u32 + 1
     }
 }
 
