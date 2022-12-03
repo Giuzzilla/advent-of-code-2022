@@ -42,13 +42,13 @@ fn first_star() -> u32 {
     score
 }
 
-fn second_star() -> i32 {
+fn second_star() -> u32 {
     let rounds = get_rounds();
-    let mut score: i32 = 0;
-    let order: HashMap<char, i32> = HashMap::from([('A', 0), ('B', 1), ('C', 2)]);
+    let mut score: u32 = 0;
+    let order: HashMap<char, u32> = HashMap::from([('A', 0), ('B', 1), ('C', 2)]);
 
     for round in rounds {
-        let idx: i32 = order[&round.first];
+        let idx = order[&round.first] as i32;
         let lose_idx = (idx - 1).rem_euclid(3);
         let win_idx = (idx + 1).rem_euclid(3);
         let increase = match round.second {
@@ -57,7 +57,7 @@ fn second_star() -> i32 {
             'Z' => 6 + win_idx + 1,
             _ => panic!("Invalid round: {} {}", round.first, round.second),
         };
-        score += increase;
+        score += increase as u32;
     }
     score
 }
