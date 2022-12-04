@@ -6,8 +6,8 @@ In this repository you'll find my personal solutions for [AoC 2022](adventofcode
 | --- | ------ |
 | 1   | ⭐⭐   |
 | 2   | ⭐⭐   |
-| 3   |        |
-| 4   |        |
+| 3   | ⭐⭐   |
+| 4   | ⭐⭐   |
 | 5   |        |
 | 6   |        |
 | 7   |        |
