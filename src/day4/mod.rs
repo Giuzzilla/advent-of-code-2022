@@ -55,7 +55,7 @@ fn get_sets(range: RangePair) -> (RangeSet, RangeSet) {
     (first_set, second_set)
 }
 
-fn get_intersection<'a>(first: &RangeSet, second: &RangeSet) -> RangeSet {
+fn get_intersection(first: &RangeSet, second: &RangeSet) -> RangeSet {
     first.intersection(&second).cloned().collect::<RangeSet>()
 }
 
