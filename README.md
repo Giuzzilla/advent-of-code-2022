@@ -1,6 +1,6 @@
 # Solutions - Advent of Code 2022
 
-In this repository you'll find my personal solutions for [AoC 2022](adventofcode.com/2022) which I'll write in [Rust](https://www.rust-lang.org/).
+In this repository you'll find my personal solutions for [AoC 2022](https://adventofcode.com/2022) which I'll write in [Rust](https://www.rust-lang.org/).
 
 | Day | Solved |
 | --- | ------ |
