@@ -8,7 +8,7 @@ In this repository you'll find my personal solutions for [AoC 2022](https://adve
 | 2   | ⭐⭐   |
 | 3   | ⭐⭐   |
 | 4   | ⭐⭐   |
-| 5   |        |
+| 5   | ⭐⭐   |
 | 6   |        |
 | 7   |        |
 | 8   |        |
