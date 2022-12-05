@@ -1,4 +1,4 @@
-//! Alternative implementation using RefCell (internal mutability pattern)
+//! Alternative implementation using RefCell (interior mutability pattern)
 
 use regex::Regex;
 use std::cell::RefCell;
