@@ -9,7 +9,7 @@ In this repository you'll find my personal solutions for [AoC 2022](https://adve
 | 3   | ⭐⭐   |                                                                            |
 | 4   | ⭐⭐   |                                                                            |
 | 5   | ⭐⭐   | Alternative implementation with <br> RefCell (Interior mutability pattern) |
-| 6   |        |                                                                            |
+| 6   | ⭐⭐   |                                                                            |
 | 7   |        |                                                                            |
 | 8   |        |                                                                            |
 | 9   |        |                                                                            |
