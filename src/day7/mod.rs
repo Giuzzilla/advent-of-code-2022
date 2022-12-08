@@ -23,9 +23,9 @@ fn collapse_group(group: Vec<&str>) -> u32 {
             let size = line
                 .split_whitespace()
                 .nth(0)
-                .unwrap()
+                .expect("Shouldn't be empty line")
                 .parse::<u32>()
-                .unwrap();
+                .expect("Must be a number");
             total += size;
         }
     }
@@ -33,8 +33,12 @@ fn collapse_group(group: Vec<&str>) -> u32 {
 }
 
 fn pop_from_stack(stack: &mut Vec<Node>) -> &Vec<Node> {
-    let removed = stack.pop().unwrap();
-    let mut last_node = stack.last_mut().unwrap();
+    let removed = stack
+        .pop()
+        .expect("Invalid state: should never pop on empty stack");
+    let mut last_node = stack.last_mut().expect(
+        "When using pop_from_stack you should always have at least two elements in the stack",
+    );
     last_node.total_under += removed.total_under;
     last_node.children.push(Box::new(removed));
     stack
@@ -59,7 +63,7 @@ fn construct_tree(groups: Vec<Vec<&str>>) -> Node {
     while stack.len() > 1 {
         pop_from_stack(&mut stack);
     }
-    stack.pop().unwrap()
+    stack.pop().expect("Root must be present")
 }
 
 fn collect_nodes<'a>(root: &'a Node, criterion: &dyn Fn(u32) -> bool) -> Vec<&'a Node> {
@@ -85,7 +89,7 @@ fn second_star(root: &Node) -> u32 {
         .iter()
         .map(|node| node.total_under)
         .min()
-        .unwrap()
+        .expect("Should have a removable folder matching criterion")
 }
 
 pub fn day7() {
