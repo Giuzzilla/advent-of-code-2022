@@ -7,6 +7,7 @@ pub mod day4;
 pub mod day5;
 pub mod day6;
 pub mod day7;
+pub mod day8;
 
 fn main() {
     let mut day_str = String::new();
@@ -24,6 +25,7 @@ fn main() {
             5 => day5::day5(),
             6 => day6::day6(),
             7 => day7::day7(),
+            8 => day8::day8(),
             _ => println!("Day {} not implemented yet", day),
         },
         _ => println!("Invalid day, must be an integer between 1 and 25"),
