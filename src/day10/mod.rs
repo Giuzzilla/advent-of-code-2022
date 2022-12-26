@@ -1,6 +1,6 @@
 enum Instruction {
     AddX(i32),
-    Noop(),
+    Noop,
 }
 
 trait Cycler {
@@ -14,22 +14,12 @@ trait Cycler {
                     self.cycle(x);
                     x += value;
                 }
-                Instruction::Noop() => (),
+                Instruction::Noop => (),
             }
         }
     }
 
     fn cycle(&mut self, x: i32);
-}
-
-struct Star1Cycler {
-    cycles_lst: Vec<i32>,
-}
-
-impl Cycler for Star1Cycler {
-    fn cycle(&mut self, x: i32) {
-        self.cycles_lst.push(x);
-    }
 }
 
 fn parse_instructions() -> Vec<Instruction> {
@@ -40,7 +30,7 @@ fn parse_instructions() -> Vec<Instruction> {
             let instruction = parts.next().expect("Should have an instruction");
 
             match instruction {
-                "noop" => Instruction::Noop(),
+                "noop" => Instruction::Noop,
                 "addx" => Instruction::AddX(
                     parts
                         .next()
@@ -52,6 +42,16 @@ fn parse_instructions() -> Vec<Instruction> {
             }
         })
         .collect()
+}
+
+struct Star1Cycler {
+    cycles_lst: Vec<i32>,
+}
+
+impl Cycler for Star1Cycler {
+    fn cycle(&mut self, x: i32) {
+        self.cycles_lst.push(x);
+    }
 }
 
 fn first_star() -> i32 {
