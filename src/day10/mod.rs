@@ -44,16 +44,9 @@ fn parse_instructions() -> Vec<Instruction> {
         .collect()
 }
 
+#[derive(Default)]
 struct Star1Cycler {
     cycles_lst: Vec<i32>,
-}
-
-impl Star1Cycler {
-    fn new() -> Self {
-        Star1Cycler {
-            cycles_lst: Vec::<i32>::new(),
-        }
-    }
 }
 
 impl Cycler for Star1Cycler {
@@ -63,7 +56,7 @@ impl Cycler for Star1Cycler {
 }
 
 fn first_star() -> i32 {
-    let mut cycler = Star1Cycler::new();
+    let mut cycler = Star1Cycler::default();
 
     cycler.run_cycles();
 
@@ -75,19 +68,13 @@ fn first_star() -> i32 {
         .sum()
 }
 
+#[derive(Default)]
 struct Star2Cycler {
     cycle: i32,
     board: Vec<Vec<char>>,
 }
 
 impl Star2Cycler {
-    fn new() -> Self {
-        Star2Cycler {
-            cycle: 0,
-            board: Vec::<Vec<char>>::new(),
-        }
-    }
-
     fn draw_char(&mut self, x: i32) {
         if self.cycle % 40 == 0 {
             self.board.push(Vec::<char>::new());
@@ -110,7 +97,7 @@ impl Cycler for Star2Cycler {
 }
 
 fn second_star() {
-    let mut cycler = Star2Cycler::new();
+    let mut cycler = Star2Cycler::default();
 
     cycler.run_cycles();
 
