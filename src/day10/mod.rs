@@ -4,6 +4,21 @@ enum Instruction {
 }
 
 trait Cycler {
+    fn run_cycles(&mut self) {
+        let instructions = parse_instructions();
+        let mut x = 1;
+        for instruction in instructions {
+            self.cycle(x);
+            match instruction {
+                Instruction::AddX(value) => {
+                    self.cycle(x);
+                    x += value;
+                }
+                Instruction::Noop() => (),
+            }
+        }
+    }
+
     fn cycle(&mut self, x: i32);
 }
 
@@ -39,26 +54,11 @@ fn parse_instructions() -> Vec<Instruction> {
         .collect()
 }
 
-fn run_cycles(cycler: &mut dyn Cycler) {
-    let instructions = parse_instructions();
-    let mut x = 1;
-    for instruction in instructions {
-        cycler.cycle(x);
-        match instruction {
-            Instruction::AddX(value) => {
-                cycler.cycle(x);
-                x += value;
-            }
-            Instruction::Noop() => (),
-        }
-    }
-}
-
 fn first_star() -> i32 {
     let mut cycler = Star1Cycler {
         cycles_lst: Vec::<i32>::new(),
     };
-    run_cycles(&mut cycler);
+    cycler.run_cycles();
 
     let desired_cycles: Vec<usize> = vec![20, 60, 100, 140, 180, 220];
 
@@ -101,7 +101,7 @@ fn second_star() {
         board: Vec::<Vec<char>>::new(),
     };
 
-    run_cycles(&mut cycler);
+    cycler.run_cycles();
 
     for row in cycler.board {
         println!("{}", row.iter().collect::<String>());
