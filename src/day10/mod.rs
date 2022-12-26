@@ -48,6 +48,14 @@ struct Star1Cycler {
     cycles_lst: Vec<i32>,
 }
 
+impl Star1Cycler {
+    fn new() -> Self {
+        Star1Cycler {
+            cycles_lst: Vec::<i32>::new(),
+        }
+    }
+}
+
 impl Cycler for Star1Cycler {
     fn cycle(&mut self, x: i32) {
         self.cycles_lst.push(x);
@@ -55,9 +63,8 @@ impl Cycler for Star1Cycler {
 }
 
 fn first_star() -> i32 {
-    let mut cycler = Star1Cycler {
-        cycles_lst: Vec::<i32>::new(),
-    };
+    let mut cycler = Star1Cycler::new();
+
     cycler.run_cycles();
 
     let desired_cycles: Vec<usize> = vec![20, 60, 100, 140, 180, 220];
@@ -74,6 +81,13 @@ struct Star2Cycler {
 }
 
 impl Star2Cycler {
+    fn new() -> Self {
+        Star2Cycler {
+            cycle: 0,
+            board: Vec::<Vec<char>>::new(),
+        }
+    }
+
     fn draw_char(&mut self, x: i32) {
         if self.cycle % 40 == 0 {
             self.board.push(Vec::<char>::new());
@@ -96,10 +110,7 @@ impl Cycler for Star2Cycler {
 }
 
 fn second_star() {
-    let mut cycler = Star2Cycler {
-        cycle: 0,
-        board: Vec::<Vec<char>>::new(),
-    };
+    let mut cycler = Star2Cycler::new();
 
     cycler.run_cycles();
 
