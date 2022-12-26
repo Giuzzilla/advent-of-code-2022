@@ -13,7 +13,7 @@ In this repository you'll find my personal solutions for [AoC 2022](https://adve
 | 7   | ⭐⭐   |                                                                            |
 | 8   | ⭐⭐   |                                                                            |
 | 9   | ⭐⭐   |                                                                            |
-| 10  |        |                                                                            |
+| 10  | ⭐⭐   |                                                                            |
 | 11  |        |                                                                            |
 | 12  |        |                                                                            |
 | 13  |        |                                                                            |
