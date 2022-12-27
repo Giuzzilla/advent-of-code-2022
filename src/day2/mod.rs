@@ -10,10 +10,7 @@ fn get_rounds() -> Vec<Round> {
     lines
         .map(|line| {
             if let [first, ' ', second] = line.chars().collect::<Vec<char>>()[..] {
-                Round {
-                    first: first,
-                    second: second,
-                }
+                Round { first, second }
             } else {
                 panic!("Invalid line: {}", line);
             }

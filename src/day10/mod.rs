@@ -26,7 +26,7 @@ fn parse_instructions() -> Vec<Instruction> {
     include_str!("./input.txt")
         .lines()
         .map(|line| {
-            let mut parts = line.split(" ");
+            let mut parts = line.split(' ');
             let instruction = parts.next().expect("Should have an instruction");
 
             match instruction {

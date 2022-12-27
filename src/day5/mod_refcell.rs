@@ -25,15 +25,13 @@ fn get_stacks() -> StackMap {
     for line in stacklines {
         let re = Regex::new(r"(?:(\[\w\]|   )(?: |$))").unwrap();
         let captures = re.captures_iter(line);
-        let mut i: u8 = 0;
-        for capture in captures {
+        for (i, capture) in (0_u8..).zip(captures) {
             let mut stack = stacks.get_mut(&i).unwrap().borrow_mut();
             if let Some(c) = capture.get(1) {
                 if c.as_str() != "   " {
                     stack.push_back(c.as_str().chars().nth(1).unwrap());
                 }
             }
-            i += 1;
         }
     }
     stacks

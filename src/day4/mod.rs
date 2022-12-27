@@ -14,7 +14,7 @@ fn get_ranges() -> Vec<RangePair> {
         .lines()
         .map(|line| {
             let (first_range, second_range) = match line
-                .split(",")
+                .split(',')
                 .take(2)
                 .collect::<Vec<&str>>()[..]
             {
@@ -23,7 +23,7 @@ fn get_ranges() -> Vec<RangePair> {
             };
 
             let (start_1, end_1) = match first_range
-                .split("-")
+                .split('-')
                 .take(2)
                 .map(|s| s.parse::<u32>().unwrap())
                 .collect::<Vec<u32>>()[..]
@@ -33,7 +33,7 @@ fn get_ranges() -> Vec<RangePair> {
             };
 
             let (start_2, end_2) = match second_range
-                .split("-")
+                .split('-')
                 .take(2)
                 .map(|s| s.parse::<u32>().unwrap())
                 .collect::<Vec<u32>>()[..]
@@ -56,7 +56,7 @@ fn get_sets(range: RangePair) -> (RangeSet, RangeSet) {
 }
 
 fn get_intersection(first: &RangeSet, second: &RangeSet) -> RangeSet {
-    first.intersection(&second).cloned().collect::<RangeSet>()
+    first.intersection(second).cloned().collect::<RangeSet>()
 }
 
 fn first_star() -> u32 {
@@ -78,7 +78,7 @@ fn second_star() -> u32 {
     for range in ranges {
         let (first_set, second_set) = get_sets(range);
         let intersection = get_intersection(&first_set, &second_set);
-        if intersection.len() > 0 {
+        if !intersection.is_empty() {
             count += 1;
         };
     }

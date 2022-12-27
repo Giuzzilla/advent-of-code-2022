@@ -34,7 +34,7 @@ fn get_subvectors(
 }
 
 fn has_blocked_view(curr: u32, subvec: Vec<u32>) -> bool {
-    subvec.len() > 0 && subvec.into_iter().any(|el| el >= curr)
+    !subvec.is_empty() && subvec.into_iter().any(|el| el >= curr)
 }
 
 fn first_star(input: &Vec<Vec<u32>>) -> u32 {
@@ -42,7 +42,7 @@ fn first_star(input: &Vec<Vec<u32>>) -> u32 {
     for i in 0..input.len() {
         for j in 0..input[0].len() {
             let curr = input[i][j];
-            let (top, bottom, left, right) = get_subvectors(&input, i, j);
+            let (top, bottom, left, right) = get_subvectors(input, i, j);
             let blocked_top = has_blocked_view(curr, top);
             let blocked_bottom = has_blocked_view(curr, bottom);
             let blocked_left = has_blocked_view(curr, left);
@@ -74,7 +74,7 @@ fn second_star(input: &Vec<Vec<u32>>) -> u32 {
     for i in 0..input.len() {
         for j in 0..input[0].len() {
             let curr = input[i][j];
-            let (mut top, bottom, mut left, right) = get_subvectors(&input, i, j);
+            let (mut top, bottom, mut left, right) = get_subvectors(input, i, j);
 
             top.reverse();
             let score_top = how_many_before_block(curr, top);

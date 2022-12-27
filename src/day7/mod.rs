@@ -1,6 +1,6 @@
 struct Node {
     total_under: u32,
-    children: Vec<Box<Node>>,
+    children: Vec<Node>,
 }
 
 fn split_cds(input: Vec<&str>) -> Vec<Vec<&str>> {
@@ -8,7 +8,7 @@ fn split_cds(input: Vec<&str>) -> Vec<Vec<&str>> {
     for line in input {
         if line.starts_with("$ cd") {
             groups.push(vec![line]);
-        } else if line != "" && line != "$ ls" && !line.starts_with("dir") {
+        } else if !line.is_empty() && line != "$ ls" && !line.starts_with("dir") {
             let last_group = groups.last_mut().expect("No last group");
             last_group.push(line);
         }
@@ -22,7 +22,7 @@ fn collapse_group(group: Vec<&str>) -> u32 {
         if !line.starts_with("$ cd") {
             let size = line
                 .split_whitespace()
-                .nth(0)
+                .next()
                 .expect("Shouldn't be empty line")
                 .parse::<u32>()
                 .expect("Must be a number");
@@ -40,7 +40,7 @@ fn pop_from_stack(stack: &mut Vec<Node>) -> &Vec<Node> {
         "When using pop_from_stack you should always have at least two elements in the stack",
     );
     last_node.total_under += removed.total_under;
-    last_node.children.push(Box::new(removed));
+    last_node.children.push(removed);
     stack
 }
 
@@ -72,7 +72,7 @@ fn collect_nodes<'a>(root: &'a Node, criterion: &dyn Fn(u32) -> bool) -> Vec<&'a
         collection.push(root);
     }
     for child in &root.children {
-        collection.extend(collect_nodes(&child, criterion));
+        collection.extend(collect_nodes(child, criterion));
     }
     collection
 }

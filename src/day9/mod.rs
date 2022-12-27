@@ -11,9 +11,9 @@ fn get_moves() -> Vec<Move> {
     include_str!("input.txt")
         .lines()
         .map(|line| {
-            let dir = line.chars().nth(0).expect("Should have a direction");
+            let dir = line.chars().next().expect("Should have a direction");
             let size = line
-                .split(" ")
+                .split(' ')
                 .nth(1)
                 .expect("Should have a size")
                 .parse::<u8>()

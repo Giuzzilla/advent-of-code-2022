@@ -18,7 +18,7 @@ struct Monkey {
 
 fn get_monkeys() -> Vec<Monkey> {
     let monkey_str = include_str!("./input.txt").split("\n\n");
-    monkey_str.map(|s| parse_monkey(s)).collect()
+    monkey_str.map(parse_monkey).collect()
 }
 
 fn parse_monkey(string: &str) -> Monkey {
@@ -30,7 +30,7 @@ fn parse_monkey(string: &str) -> Monkey {
         .collect();
 
     let full_operation = lines[2]["Operation: new = old ".len()..]
-        .split(" ")
+        .split(' ')
         .collect::<Vec<&str>>();
 
     let op = match full_operation[..] {
