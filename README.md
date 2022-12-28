@@ -15,7 +15,7 @@ In this repository you'll find my personal solutions for [AoC 2022](https://adve
 | 9   | ⭐⭐   |                                                                            |
 | 10  | ⭐⭐   |                                                                            |
 | 11  | ⭐⭐   |                                                                            |
-| 12  |        |                                                                            |
+| 12  | ⭐⭐   |                                                                            |
 | 13  |        |                                                                            |
 | 14  |        |                                                                            |
 | 15  |        |                                                                            |
