@@ -6,6 +6,7 @@ pub mod day11;
 pub mod day12;
 pub mod day13;
 pub mod day14;
+pub mod day15;
 pub mod day2;
 pub mod day3;
 pub mod day4;
@@ -38,6 +39,7 @@ fn main() {
             12 => day12::day12(),
             13 => day13::day13(),
             14 => day14::day14(),
+            15 => day15::day15(),
             _ => println!("Day {} not implemented yet", day),
         },
         _ => println!("Invalid day, must be an integer between 1 and 25"),
