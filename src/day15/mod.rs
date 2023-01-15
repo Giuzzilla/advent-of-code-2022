@@ -93,11 +93,9 @@ fn second_star() -> i64 {
         }
     }
 
-    let n_sensors = sensors.len();
-
     let matching_point: Option<Coord> = points.iter().cloned().find(|point| {
-        for i in 0..n_sensors {
-            if sensors[i].dist(*point) <= sensors[i].range {
+        for sensor in &sensors {
+            if sensor.dist(*point) <= sensor.range {
                 return false;
             }
         }
