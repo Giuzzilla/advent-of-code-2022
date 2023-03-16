@@ -44,7 +44,7 @@ impl Sensor {
 fn get_sensors() -> Vec<Sensor> {
     include_str!("./input.txt")
         .lines()
-        .map(|s| Sensor::new(s))
+        .map(Sensor::new)
         .collect()
 }
 
@@ -87,7 +87,7 @@ fn second_star() -> i64 {
             let dy = extern_dist - dx;
             let x = sensor.coords.0 + dx;
             let y = sensor.coords.1 + dy;
-            if x >= MIN_COORD && x <= MAX_COORD && y >= MIN_COORD && y <= MAX_COORD {
+            if (MIN_COORD..=MAX_COORD).contains(&x) && (MIN_COORD..=MAX_COORD).contains(&y) {
                 points.push((x, y));
             }
         }

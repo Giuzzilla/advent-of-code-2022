@@ -9,7 +9,7 @@ fn get_rock_points() -> HashSet<Point> {
             let parts: Vec<Point> = line
                 .split(" -> ")
                 .map(|part| {
-                    let mut parts = part.split(",");
+                    let mut parts = part.split(',');
                     let x = parts.next().unwrap().parse::<u32>().unwrap();
                     let y = parts.next().unwrap().parse::<u32>().unwrap();
                     (x, y)
@@ -62,7 +62,7 @@ fn second_star() -> u32 {
     let max_y = *rocks.iter().map(|(_, y)| y).max().unwrap() + 2;
     let mut n_sand: u32 = 0;
     while !rocks.contains(&POUR_POINT) {
-        if !(curr_sand.1 + 1 < max_y) {
+        if curr_sand.1 + 1 >= max_y {
             mark_bottom(&mut rocks, &mut curr_sand, &mut n_sand);
         } else if !rocks.contains(&(curr_sand.0, curr_sand.1 + 1)) {
             curr_sand = (curr_sand.0, curr_sand.1 + 1);

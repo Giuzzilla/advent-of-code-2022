@@ -31,12 +31,12 @@ fn get_pairs() -> Vec<Pair> {
     include_str!("./input.txt")
         .split("\n\n")
         .map(|group| {
-            let mut pairs_str = group.split("\n");
+            let mut pairs_str = group.split('\n');
             let first: Value =
-                serde_json::from_str(&pairs_str.next().expect("Expected first of pair"))
+                serde_json::from_str(pairs_str.next().expect("Expected first of pair"))
                     .expect("Wrong type of first of pair");
             let second: Value =
-                serde_json::from_str(&pairs_str.next().expect("Expected second of pair"))
+                serde_json::from_str(pairs_str.next().expect("Expected second of pair"))
                     .expect("Wrong type of second of pair");
             (first, second)
         })
@@ -62,7 +62,7 @@ fn compare(v1: &Value, v2: &Value) -> i32 {
             }
 
             if len1 < len2 {
-                -1 as i32
+                -1_i32
             } else {
                 (len1 > len2) as i32
             }
@@ -73,8 +73,8 @@ fn compare(v1: &Value, v2: &Value) -> i32 {
 fn first_star() -> usize {
     let pairs = get_pairs();
     let mut ordered_ids: Vec<usize> = Vec::new();
-    for i in 0..pairs.len() {
-        if compare(&pairs[i].0, &pairs[i].1) < 0 {
+    for (i, pair) in pairs.iter().enumerate() {
+        if compare(&pair.0, &pair.1) < 0 {
             ordered_ids.push(i + 1);
         }
     }
@@ -99,8 +99,8 @@ fn second_star() -> usize {
     values.sort();
 
     let mut mult = 1;
-    for i in 0..values.len() {
-        if values[i] == &dividers.0 || values[i] == &dividers.1 {
+    for (i, value) in values.iter().enumerate() {
+        if *value == &dividers.0 || *value == &dividers.1 {
             mult *= i + 1;
         }
     }

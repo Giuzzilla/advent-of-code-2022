@@ -73,9 +73,9 @@ fn valid_edge(u_char: char, v_char: char) -> bool {
 
 fn get_nodes(grid: &CharGrid, mapping: &NodeMap, c: char) -> Vec<NodeIndex> {
     let mut node_indexes: Vec<NodeIndex> = Vec::new();
-    for j in 0..grid.len() {
-        for i in 0..grid[j].len() {
-            if grid[j][i] == c {
+    for (j, row) in grid.iter().enumerate() {
+        for (i, cell) in row.iter().enumerate() {
+            if *cell == c {
                 node_indexes.push(*mapping.get(&(i, j)).unwrap());
             }
         }

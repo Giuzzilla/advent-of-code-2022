@@ -41,7 +41,7 @@ fn floyd_warshall(edge_map: &EdgeMap) -> DistMatrix {
     let mut dist = HashMap::new();
 
     for (valve, edges) in edge_map {
-        for (valve2, _) in edge_map {
+        for valve2 in edge_map.keys() {
             if edges.contains(valve2) {
                 dist.insert((valve, valve2), 1);
             } else {
@@ -113,7 +113,7 @@ fn solve(
 
         solution.insert(
             current.clone(),
-            max(*solution.get(&current).unwrap_or(&mut 0), accumulated),
+            max(*solution.get(&current).unwrap_or(&0), accumulated),
         );
 
         for (valve2, flow2) in &positive_valves {
